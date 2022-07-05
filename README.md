@@ -17,6 +17,34 @@ The Library is designed to support querying these triples in 3 modes:
 
 ## RDFLib Triples Mode
 
+The triples are read into an inmemory RDFLib graph.  Therefore, using the rdflib.triples query format is supported.
+
+The module `rdf_cty_ccy.graph.rdf_prefix` provides shorthand prefixes for the various RDF prefixes using in the ontologies.
+
+```python
+fibo_fnd_acc_cur = Namespace('https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/')
+fibo_fnd_acc_4217 = Namespace('https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/')
+fibo_fnd_utl_av = Namespace("https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/")
+lcc_3166_1 = Namespace('https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/')
+lcc_cr = Namespace('https://www.omg.org/spec/LCC/Countries/CountryRepresentation/')
+lcc_lr = Namespace("https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/")
+```
+
+Therefore `rdf_prefix.lcc_3166_1.NZL` is equivalent to the URI `https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/NZL`
+
+The RDFLib triples query produces a list of RDF triples which match the triples provided.  (See the docs at rdflib)[https://rdflib.readthedocs.io/en/stable/intro_to_graphs.html#basic-triple-matching].
+
+```python
+from rdf_cty_ccy.graph import graph, graph_query
+from rdf_cty_ccy.graph import rdf_prefix as P
+
+result = graph_query.query((None, P.lcc_lr.hasTag, Literal("NZL", datatype=XSD.string)))
+
+s, _, _ = result[0]
+
+s == P.lcc_3166_1.NZL
+```
+
 
 ## SPARQL Mode
 
