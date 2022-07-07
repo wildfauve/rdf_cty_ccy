@@ -11,7 +11,16 @@ The Library is designed to support querying these triples in 3 modes:
 
 + Using the Python RDFLib library.  The graph is queried using the RDFLib triples mode.  Returns RDF triples.
 + Using a SPARQL query.  Returns an RDFLib SPARQL result.
-+ Via an OO query approach, which returns country and currency objects. 
++ Via an OO query approach, which returns country and currency objects.
+
+# Building
+
+The TTL files are extracted from the ontology locations (FIBO and OMG) and written to `rdf_cty_ccy/rdfdata`.  To re-get and re-build the ttl files, run the Makefile.
+
+```shell
+make build_cty_ccy_onto
+```
+
 
 # Usage
 

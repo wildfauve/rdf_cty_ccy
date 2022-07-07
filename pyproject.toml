@@ -4,12 +4,16 @@ version = "0.1.1"
 description = ""
 authors = ["Col Perks <wild.fauve@gmail.com>"]
 
+[tool.poetry.scripts]
+build_onto = "rdf_cty_ccy.common.build_onto:builder"
+
 [tool.poetry.dependencies]
 python = "^3.9"
 rdflib = "^6.1.1"
 simple-memory-cache = "^1.0.0"
 attrs = "^21.4.0"
 PyMonad = "^2.4.0"
+requests = "^2.28.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

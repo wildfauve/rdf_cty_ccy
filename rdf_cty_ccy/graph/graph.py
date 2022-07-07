@@ -23,4 +23,7 @@ def build_graph():
     return g
 
 def initgraph() -> Graph:
-    return binding.bind(Graph())
+    return binding.bind(rdf_graph())
+
+def rdf_graph():
+    return Graph()
