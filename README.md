@@ -17,6 +17,12 @@ The Library is designed to support querying these triples in 3 modes:
 
 The TTL files are extracted from the ontology locations (FIBO and OMG) and written to `rdf_cty_ccy/rdfdata`.  To re-get and re-build the ttl files, run the Makefile.
 
+The Country and Currency ontologies are sourced from the following locations:
+
++ [Currency Codes](https://spec.edmcouncil.org/fibo/ontology/master/2022Q1/FND/Accounting/ISO4217-CurrencyCodes/)
++ [Country Codes](https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/)
+
+
 ```shell
 make build_cty_ccy_onto
 ```
@@ -57,7 +63,18 @@ s == P.lcc_3166_1.NZL
 
 ## SPARQL Mode
 
-## OO Mode
+## Python Objects Mode
+
+The graph can be queried using a python API interface; from the module `rdf_cty_ccy.query.query`.  It returns a `Country` object which has the following properties (note that `URIRef` and `Literal` comes from RDFLib:
+
++ `country_uri`: URIRef 
++ `identifies`: URIRef
++ `label`: Literal
++ `currency`: Currency:
+  + `currency_uri`: URIRef
+  + `identifies`: URIRef
+  + `label`: Literal
+  
 
 ```python
 from rdf_cty_ccy.query import query as Q
@@ -75,5 +92,11 @@ country = Q.by_country_code(code='NZL', filters=[Q.Filter.WithCurrency])
 
 country.currency.currency_uri   # => rdflib.term.URIRef('https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/NZD')
 
+```
+
+You can also query by the country URI (as a string) as follow:
+
+```python
+country = Q.by_country_uri(uri='https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/NZL')
 ```
 
