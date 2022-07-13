@@ -10,3 +10,5 @@ fibo_fnd_utl_av = Namespace("https://spec.edmcouncil.org/fibo/ontology/FND/Utili
 lcc_3166_1 = Namespace('https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/')
 lcc_cr = Namespace('https://www.omg.org/spec/LCC/Countries/CountryRepresentation/')
 lcc_lr = Namespace("https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/")
+
+sfo_cmn_ind_cur = Namespace("https://nzsuperfund.co.nz/ontology/CMN/Ind/Currency/")

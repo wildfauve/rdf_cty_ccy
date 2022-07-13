@@ -1,3 +1,4 @@
+from typing import List
 from attrs import define
 from rdflib import URIRef, Literal
 
@@ -36,3 +37,7 @@ class Country:
     label: Literal = None
     code_type: URIRef = None
     currency: Currency = None
+    currencies: List[Currency] = []
+
+    def has_single_currency(self):
+        return len(self.currencies) == 1

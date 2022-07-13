@@ -9,4 +9,5 @@ def bind(g):
     g.bind('lcc-3166-1', lcc_3166_1)
     g.bind('lcc-cr', lcc_cr)
     g.bind('lcc-lr', lcc_lr)
+    g.bind('sfo-cmn-ind-cur', sfo_cmn_ind_cur)
     return g

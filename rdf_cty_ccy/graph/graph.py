@@ -21,6 +21,7 @@ def build_graph():
     g = initgraph()
     g.parse(currency_code_triples)
     g.parse(country_code_triples)
+    g.parse(sfo_currency_extensions)
     return g
 
 def initgraph() -> Graph:

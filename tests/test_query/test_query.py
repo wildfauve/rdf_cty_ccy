@@ -32,6 +32,14 @@ def it_returns_a_single_country_with_currency():
     assert result.currency.identifies == P.fibo_fnd_acc_4217.NewZealandDollar
     assert result.currency.label == Literal('NZD')
 
+def it_returns_a_single_currency_and_list_with_one_ccy():
+    result = Q.by_country_code(code='NZL', filters=[Q.Filter.WithCurrency])
+
+    assert len(result.currencies) == 1
+    assert result.currencies[0] == result.currency
+    assert result.has_single_currency()
+
+
 def it_returns_a_single_country_based_on_country_uri():
     result = Q.by_country_uri(uri='https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/NZL')
 
@@ -46,3 +54,12 @@ def it_finds_an_alpha_2_cty_code():
     assert result.identifies == P.lcc_3166_1.NewZealand
     assert result.label == Literal('NZ')
     assert result.code_type == P.lcc_3166_1.term("ISO3166-1-Alpha2-CodeSet")
+
+def it_returns_multiple_ccy_from_extension():
+    result = Q.by_country_code(code='CHN', filters=[Q.Filter.WithCurrency])
+
+    assert not result.currency
+
+    ccys = [ccy.currency_uri for ccy in result.currencies]
+
+    assert ccys == [P.fibo_fnd_acc_4217.CNY, P.sfo_cmn_ind_cur.CNH]

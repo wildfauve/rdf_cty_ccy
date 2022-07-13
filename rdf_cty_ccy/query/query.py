@@ -51,11 +51,11 @@ def convert_uri(uri):
 
 
 def find_by_code(query_fn, lit_code):
-    return fn.first([r for r in graph_query.sparql(query_fn(lit_code))])
+    return [r for r in graph_query.sparql(query_fn(lit_code))]
 
 
 def find_by_uri(query_fn, uri):
-    return fn.first([r for r in graph_query.sparql(query_fn(uri))])
+    return [r for r in graph_query.sparql(query_fn(uri))]
 
 
 def build(country: model.Country,
@@ -64,18 +64,29 @@ def build(country: model.Country,
     if not result:
         return None
 
-    if not country.country_uri:
-        country.country_uri = result.cty
+    cty = fn.first(result)
 
-    country.identifies = result.cty_identifies
-    country.code_type = result.codeset
-    country.label = result.cty_label
+    if not country.country_uri:
+        country.country_uri = cty.cty
+
+    country.identifies = cty.cty_identifies
+    country.code_type = cty.codeset
+    country.label = cty.cty_label
 
     if Filter.WithCurrency in filters:
-        country.currency = model.Currency(currency_uri=result.ccy_code_uri,
-                                          identifies=result.ccy_identifies,
-                                          label=result.ccy_label)
+        if len(result) == 1:
+            ccy = build_ccy(cty)
+            country.currency = ccy
+            country.currencies = [ccy]
+        else:
+            country.currencies = list(map(build_ccy, result))
     return country
+
+
+def build_ccy(result) -> model.Currency:
+    return model.Currency(currency_uri=result.ccy_code_uri,
+                          identifies=result.ccy_identifies,
+                          label=result.ccy_label)
 
 
 def cty_tag_maximal_query(cty_tag: Literal) -> rdflib.plugins.sparql.processor.SPARQLResult:
