@@ -10,8 +10,8 @@ cty_url = "https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/"
 ccy_temp = "rdf_cty_ccy/rdfdata/ccy.rdf"
 cty_temp = "rdf_cty_ccy/rdfdata/cty.rdf"
 
-ccy_ttl_loc = "rdf_cty_ccy/rdfdata/ISO3166-1-CountryCodes.ttl"
-cty_ttl_loc = "rdf_cty_ccy/rdfdata/ISO4217-CurrencyCodes.ttl"
+cty_ttl_loc = "rdf_cty_ccy/rdfdata/ISO3166-1-CountryCodes.ttl"
+ccy_ttl_loc = "rdf_cty_ccy/rdfdata/ISO4217-CurrencyCodes.ttl"
 
 def builder(args=None):
     """

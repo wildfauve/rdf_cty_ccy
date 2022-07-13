@@ -7,6 +7,7 @@ graph_cache = GLOBAL_CACHE.MemoryCachedVar('graph_cache')
 
 currency_code_triples = "rdf_cty_ccy/rdfdata/ISO3166-1-CountryCodes.ttl"
 country_code_triples = "rdf_cty_ccy/rdfdata/ISO4217-CurrencyCodes.ttl"
+sfo_currency_extensions = 'rdf_cty_ccy/rdfdata/sfo-currency-extensions.ttl'
 
 def graph():
     return graph_cache.get()
