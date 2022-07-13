@@ -1,13 +1,16 @@
 from rdflib import Graph
 from simple_memory_cache import GLOBAL_CACHE
+from pathlib import Path
+
+base_path = Path(__file__).parent
 
 from . import binding
 
 graph_cache = GLOBAL_CACHE.MemoryCachedVar('graph_cache')
 
-currency_code_triples = "rdf_cty_ccy/rdfdata/ISO3166-1-CountryCodes.ttl"
-country_code_triples = "rdf_cty_ccy/rdfdata/ISO4217-CurrencyCodes.ttl"
-sfo_currency_extensions = 'rdf_cty_ccy/rdfdata/sfo-currency-extensions.ttl'
+currency_code_triples = (base_path / "../rdfdata/ISO3166-1-CountryCodes.ttl").resolve()
+country_code_triples = (base_path / "../rdfdata/ISO4217-CurrencyCodes.ttl").resolve()
+sfo_currency_extensions = (base_path / '../rdfdata/sfo-currency-extensions.ttl').resolve()
 
 def graph():
     return graph_cache.get()
