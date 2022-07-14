@@ -348,7 +348,7 @@ fibo-fnd-acc-4217:CNY a owl:NamedIndividual,
     skos:definition "the currency identifier for Yuan Renminbi"@en ;
     lcc-lr:denotes fibo-fnd-acc-4217:YuanRenminbi ;
     lcc-lr:hasTag "CNY" ;
-        lcc-lr:identifies fibo-fnd-acc-4217:YuanRenminbi ;
+    lcc-lr:identifies fibo-fnd-acc-4217:YuanRenminbi ;
     lcc-lr:isMemberOf fibo-fnd-acc-4217:ISO4217-CodeSet .
 
 fibo-fnd-acc-4217:COP a owl:NamedIndividual,

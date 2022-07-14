@@ -1,5 +1,5 @@
 from pymonad.operators.either import Either
-from typing import Any, TypeVar, Callable, Union, Any, Generic
+from typing import TypeVar, Callable, Union, Any, Generic
 
 
 T = TypeVar('T')
