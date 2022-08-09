@@ -1,9 +1,7 @@
 from typing import List, Optional
 
 from rdflib import Literal, URIRef, XSD
-from attrs import define
 import rdflib.plugins.sparql.processor
-from enum import Enum
 
 from rdf_cty_ccy.graph import graph_query
 from rdf_cty_ccy.common import fn, monad
