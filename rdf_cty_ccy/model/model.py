@@ -1,8 +1,8 @@
 from typing import List
-from attrs import define
+from dataclasses import dataclass, field
 from rdflib import URIRef, Literal
 
-@define
+@dataclass
 class Currency:
     """
     <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/NZD>
@@ -19,7 +19,7 @@ class Currency:
     label: Literal
 
 
-@define
+@dataclass
 class Country:
     """
     <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/NZL>
@@ -37,7 +37,7 @@ class Country:
     label: Literal = None
     code_type: URIRef = None
     currency: Currency = None
-    currencies: List[Currency] = []
+    currencies: List[Currency] = field(default_factory=list)
 
     def has_single_currency(self):
         return len(self.currencies) == 1

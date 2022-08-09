@@ -11,7 +11,6 @@ build_onto = "rdf_cty_ccy.common.build_onto:builder"
 python = "^3.9"
 rdflib = "^6.1.1"
 simple-memory-cache = "^1.0.0"
-attrs = "^21.4.0"
 PyMonad = "^2.4.0"
 requests = "^2.28.1"
 
