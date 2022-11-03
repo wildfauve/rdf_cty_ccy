@@ -1,8 +1,10 @@
 [tool.poetry]
 name = "rdf_cty_ccy"
-version = "0.1.4"
-description = ""
+version = "0.1.6"
+description = "Provides the FIBO and OMG Country and Currency Ontology in a queryable form."
 authors = ["Col Perks <wild.fauve@gmail.com>"]
+repository = 'https://github.com/wildfauve/rdf_cty_ccy'
+readme = 'README.md'
 
 [tool.poetry.scripts]
 build_onto = "rdf_cty_ccy.common.build_onto:builder"
